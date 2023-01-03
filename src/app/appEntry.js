@@ -115,3 +115,4 @@ function loadPage(page) {
 	});
 }
 
+//modules.exports= {loadSettings, loadPage};

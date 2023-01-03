@@ -100,6 +100,11 @@ function createWindow() {
       minHeight: 800,
       minWidth: 1000,
       customVar: 'elephants',
+      webPreferences: {
+        nodeIntegration: true,
+        enableRemoteModule: true,
+        contextIsolation: false
+      },
       isDebug: DEBUG
     });
 

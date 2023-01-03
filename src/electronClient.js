@@ -13,7 +13,7 @@ const {ipcRenderer, webFrame, remote} = require('electron');
 
 // disable zooming inside of the browser.  This just messes up scratch jr
 webFrame.setVisualZoomLevelLimits(1, 1);
-webFrame.setLayoutZoomLevelLimits(0, 0);
+//webFrame.setLayoutZoomLevelLimits(0, 0);
 
 /* eslint-enable import/extensions */  // --> ON
 /* eslint-enable import/no-extraneous-dependencies */  // --> ON
