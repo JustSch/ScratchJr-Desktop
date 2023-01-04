@@ -1,5 +1,5 @@
-const Intl = require('intl');
-const IntlMessageFormat = require('intl-messageformat');
+const Intl = require('intl').Intl;
+const IntlMessageFormat = require('intl-messageformat').IntlMessageFormat;
 
 import Cookie from './Cookie.js';
 import IO from '../iPad/IO.js';
@@ -119,7 +119,7 @@ export default class Localization {
         var message;
         if (window.IntlMessageFormat) {
 			if (key in localizationMessages) {
-				message = new window.IntlMessageFormat.IntlMessageFormat(localizationMessages[key], currentLocale);
+				message = new window.IntlMessageFormat(localizationMessages[key], currentLocale);
 				return message.format(formatting);
 			}
         } else {

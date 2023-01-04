@@ -26,7 +26,7 @@ const util = require('util');
 
 const crypto = require('crypto');
 
-let isDev =  require('electron-is-dev');
+let isDev = require('electron-is-dev');
 
 isDev = (isDev) || process.env.DEBUG_SCRATCHJR;
 
@@ -35,7 +35,7 @@ isDev = (isDev) || process.env.DEBUG_SCRATCHJR;
 /* eslint-disable import/no-extraneous-dependencies */  // --> OFF
 /* eslint-disable import/no-unresolved  */  // --> OFF
 
-const { app, dialog, BrowserWindow, BrowserView, ipcMain, Menu } = require('electron');  
+const { app, dialog, BrowserWindow, BrowserView, ipcMain, Menu } = require('electron');
 
 
 
@@ -45,12 +45,12 @@ const { app, dialog, BrowserWindow, BrowserView, ipcMain, Menu } = require('elec
 
 
 
-const DEBUG =  isDev;
-const DEBUG_DATABASE      = DEBUG && false;
-const DEBUG_FILEIO        = DEBUG && true;
-const DEBUG_RESOURCEIO    = DEBUG && false;
-const DEBUG_CLEANASSETS   = DEBUG && false;
-const DEBUG_NYI           = DEBUG && true;
+const DEBUG = isDev;
+const DEBUG_DATABASE = DEBUG && false;
+const DEBUG_FILEIO = DEBUG && true;
+const DEBUG_RESOURCEIO = DEBUG && false;
+const DEBUG_CLEANASSETS = DEBUG && false;
+const DEBUG_NYI = DEBUG && true;
 const DEBUG_LOAD_DEVTOOLS = DEBUG && true;
 
 
@@ -77,8 +77,6 @@ process.on('unhandledRejection', (reason, p) => {
 
 
 
-// SQL JS adds its own uncaughtException handler  - so we need to register ours first.
-const SQL = require('sql.js');
 
 
 
@@ -155,36 +153,36 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-	
+
   createWindow();
-  
+
   let template;
   if (dataStore.hasRestoreDatabase()) {
-	   template = [
-	   {
-		  label: 'File',
-		  submenu: [
-				{ label: 'Restore projects', click: dataStore.restoreProjects.bind(dataStore) },
-				{ type: 'separator' },
-				{ role: 'quit' },
-		  ],
-		}];
-  } else {
-      template = [ 
+    template = [
       {
-		  label: 'File',
-		  submenu: [
-				{ role: 'quit' },
-		  ],
-		}];
-  }  
-  
+        label: 'File',
+        submenu: [
+          { label: 'Restore projects', click: dataStore.restoreProjects.bind(dataStore) },
+          { type: 'separator' },
+          { role: 'quit' },
+        ],
+      }];
+  } else {
+    template = [
+      {
+        label: 'File',
+        submenu: [
+          { role: 'quit' },
+        ],
+      }];
+  }
+
 
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
-  
-  
-  
+
+
+
 
 });
 
@@ -193,9 +191,9 @@ app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   //if (process.platform !== 'darwin') {
-    // since we don't have a window menu we have to exit, even on mac.
+  // since we don't have a window menu we have to exit, even on mac.
 
-    app.quit();
+  app.quit();
   //}
 });
 
@@ -223,14 +221,14 @@ app.on('activate', () => {
 // ipcMain calls for the tabletInterface =======================================
 
 /** returns if we are in a debug mode */
-ipcMain.on('io_getIsDebug', (event, arg) =>  { // eslint-disable-line  no-unused-vars
-	event.returnValue = DEBUG; 
-	
+ipcMain.on('io_getIsDebug', (event, arg) => { // eslint-disable-line  no-unused-vars
+  event.returnValue = DEBUG;
+
 });
 
-ipcMain.on('debugWriteLog', (event, args) =>  { // eslint-disable-line  no-unused-vars
-	debugLog(args); // send to our debugLog which will write to a file.
-	event.returnValue = true;
+ipcMain.on('debugWriteLog', (event, args) => { // eslint-disable-line  no-unused-vars
+  debugLog(args); // send to our debugLog which will write to a file.
+  event.returnValue = true;
 });
 
 /**
@@ -271,7 +269,7 @@ ipcMain.on('io_getfile', (event, arg) => {
  * NOTE: appears to be the same as getfile??
  */
 ipcMain.on('io_getmedia', (event, filename) => {
-  if (DEBUG_FILEIO)debugLog('io_getmedia', filename);
+  if (DEBUG_FILEIO) debugLog('io_getmedia', filename);
 
 
   event.returnValue = dataStore.readProjectFileAsBase64EncodedString(filename);
@@ -293,7 +291,7 @@ ipcMain.on('io_getmediadata', (event, key, offset, length) => {
 
   if (mediaString) {
     try {
-      event.returnValue = mediaString.substring(offset, offset + length); 
+      event.returnValue = mediaString.substring(offset, offset + length);
     } catch (e) {
       debugLog('error parsing media');
     }
@@ -398,7 +396,7 @@ ipcMain.on('io_gettextresource', (event, filename) => {
   if (DEBUG_RESOURCEIO) debugLog('io_gettextresource', filename);
 
 
-    // returns a file from the app resource directory
+  // returns a file from the app resource directory
   const filePath = dataStore.safeGetFilenameInAppDirectory(filename, true);
 
 
@@ -414,15 +412,15 @@ ipcMain.on('io_gettextresource', (event, filename) => {
 
 
 /** search for audio data 
-	first look for app/src/samples
-	then look for  app/src/sounds
-	then look in db for the audio name
+  first look for app/src/samples
+  then look for  app/src/sounds
+  then look in db for the audio name
 */
 ipcMain.on('io_getAudioData', (event, audioName) => {
-   if (DEBUG_FILEIO) debugLog('io_getAudioData - looking for', audioName);
-  
-   
-    // try fishing out of the app directory first - samples/pig.wav
+  if (DEBUG_FILEIO) debugLog('io_getAudioData - looking for', audioName);
+
+
+  // try fishing out of the app directory first - samples/pig.wav
   let filePath = dataStore.safeGetFilenameInAppDirectory(audioName, false);
 
   if (!filePath) { // if not pull from the sounds directory
@@ -430,23 +428,23 @@ ipcMain.on('io_getAudioData', (event, audioName) => {
   }
 
 
-  
+
   if (!filePath) { // if not pull from the scratch document folder.
-  	if (DEBUG_FILEIO) debugLog('...trying to look in the PROJECTFILE table', audioName);
-   
-   	// this is already stored as a string, we do not need to convert it
-     let projectDBFile = dataStore.readProjectFileAsBase64EncodedString(audioName);
-     if (DEBUG_FILEIO && !projectDBFile) debugLog('...WARNING: unable to find: ',  audioName);
-     event.returnValue = projectDBFile;
-	return;
+    if (DEBUG_FILEIO) debugLog('...trying to look in the PROJECTFILE table', audioName);
+
+    // this is already stored as a string, we do not need to convert it
+    let projectDBFile = dataStore.readProjectFileAsBase64EncodedString(audioName);
+    if (DEBUG_FILEIO && !projectDBFile) debugLog('...WARNING: unable to find: ', audioName);
+    event.returnValue = projectDBFile;
+    return;
   }
-  
-  
-  const  data = fs.readFileSync(filePath);
-  
+
+
+  const data = fs.readFileSync(filePath);
+
   if (!data) {
-  	if (DEBUG_FILEIO) debugLog('io_getAudioData - could not find on disk', audioName, filePath);
-  
+    if (DEBUG_FILEIO) debugLog('io_getAudioData - could not find on disk', audioName, filePath);
+
     event.returnValue = null;
     return;
   }
@@ -463,7 +461,7 @@ ipcMain.on('io_getAudioData', (event, audioName) => {
 });
 
 ipcMain.on('database_stmt', (event, json) => {
-// {"stmt":"select name,thumbnail,id,isgift from projects where deleted = ? AND version = ? AND gallery IS NULL order by ctime desc","values":["NO","iOSv01"]}
+  // {"stmt":"select name,thumbnail,id,isgift from projects where deleted = ? AND version = ? AND gallery IS NULL order by ctime desc","values":["NO","iOSv01"]}
   if (DEBUG_DATABASE) debugLog('database_stmt', json);
 
   const db = dataStore.getDatabaseManager();
@@ -484,13 +482,13 @@ ipcMain.on('database_query', (event, json) => {
 class ScratchJRDataStore {
 
   constructor(electronBrowserWindow) {
-        /** Cache of key to base64-encoded media value */
+    /** Cache of key to base64-encoded media value */
     this.mediaStrings = {};
-    this.electronBrowserWindow = electronBrowserWindow; 
+    this.electronBrowserWindow = electronBrowserWindow;
   }
-    /** gets an md5 checksum of the data passed in.
-        @param {object} data
-    */
+  /** gets an md5 checksum of the data passed in.
+      @param {object} data
+  */
   getMD5(data) { // eslint-disable class-methods-use-this
     return crypto.createHash('md5').update(data).digest('hex');
   }
@@ -512,47 +510,47 @@ class ScratchJRDataStore {
     const scratchRestoreDB = path.join(scratchFolder, 'scratchjr.sqllite.restore');
 
 
-	return fs.existsSync(scratchRestoreDB);
+    return fs.existsSync(scratchRestoreDB);
   }
-    /** copies a scratchjr.sqllite.restore database over the
-        existing database.  This is used in a classroom situation
-        where you want to reset the projects to a certain configuration
-    */
+  /** copies a scratchjr.sqllite.restore database over the
+      existing database.  This is used in a classroom situation
+      where you want to reset the projects to a certain configuration
+  */
   restoreProjects() {
-  	 const scratchFolder = ScratchJRDataStore.getScratchJRFolder();
-	 const scratchDBPath = path.join(scratchFolder, 'scratchjr.sqllite');
-	 const scratchRestoreDB = path.join(scratchFolder, 'scratchjr.sqllite.restore');
-	
-  	if (fs.existsSync(scratchRestoreDB)) {
-		this.databaseManager = new DatabaseManager(scratchDBPath, scratchRestoreDB);
+    const scratchFolder = ScratchJRDataStore.getScratchJRFolder();
+    const scratchDBPath = path.join(scratchFolder, 'scratchjr.sqllite');
+    const scratchRestoreDB = path.join(scratchFolder, 'scratchjr.sqllite.restore');
 
-		if (DEBUG_DATABASE) debugLog('DatabaseManager reloaded from restored copy');
+    if (fs.existsSync(scratchRestoreDB)) {
+      this.databaseManager = new DatabaseManager(scratchDBPath, scratchRestoreDB);
 
-			 // notify the electron client that the database has changed.
-			 // electron client will navigate back to the index.html
-			 // when it gets ipcRenderer.on('databaseRestored')
-		this.electronBrowserWindow.webContents.send('databaseRestored', {});
-	   
-	    dialog.showMessageBox(
-	    		this.electronBrowserWindow,
-	    		{
-					type: 'info',
-	    			buttons: ['OK'],
-	    			title: 'Database Restored',
-	    			message: 'The database has been restored'
-	    		},
-	    		null /*no callback*/
-	    		);
+      if (DEBUG_DATABASE) debugLog('DatabaseManager reloaded from restored copy');
 
-	} else {
-	    dialog.showErrorBox('Database Restored', 'The database not been restored.  Could not find file: ' + scratchRestoreDB);
-	}
+      // notify the electron client that the database has changed.
+      // electron client will navigate back to the index.html
+      // when it gets ipcRenderer.on('databaseRestored')
+      this.electronBrowserWindow.webContents.send('databaseRestored', {});
+
+      dialog.showMessageBox(
+        this.electronBrowserWindow,
+        {
+          type: 'info',
+          buttons: ['OK'],
+          title: 'Database Restored',
+          message: 'The database has been restored'
+        },
+        null /*no callback*/
+      );
+
+    } else {
+      dialog.showErrorBox('Database Restored', 'The database not been restored.  Could not find file: ' + scratchRestoreDB);
+    }
   }
 
 
-    /** verifies if a file is within the Scratch JR documents folder
-        @param {string} fullPath full path to folder
-    */
+  /** verifies if a file is within the Scratch JR documents folder
+      @param {string} fullPath full path to folder
+  */
   isInScratchJRFolder(fullPath) {
     if (!fullPath || fullPath.length === 0) return false;
     const testFolder = path.dirname(fullPath);
@@ -567,7 +565,7 @@ class ScratchJRDataStore {
   }
 
 
-    /** getScratchJRFolder - returns ScratchJR folder in documents */
+  /** getScratchJRFolder - returns ScratchJR folder in documents */
   static getScratchJRFolder() {
     const documents = app.getPath('documents');
     if (!documents) throw new Error('could not get documents folder');
@@ -577,10 +575,10 @@ class ScratchJRDataStore {
     this.ensureDir(scratchJRPath);
     return scratchJRPath;
   }
-    /** ensureDir ensures folder exists
-        @param {string} path
+  /** ensureDir ensures folder exists
+      @param {string} path
 
-     */
+   */
 
   static ensureDir(filePath) {
     if (!fs.existsSync(filePath)) {
@@ -588,48 +586,48 @@ class ScratchJRDataStore {
     }
   }
 
-    /** save a media string to the cache
-        @param {string} key
-        @param {string} base64EncodedStr string of audio
-     */
+  /** save a media string to the cache
+      @param {string} key
+      @param {string} base64EncodedStr string of audio
+   */
   cacheMedia(key, base64EncodedStr) {
     this.mediaStrings[key] = base64EncodedStr;
   }
 
-    /** return a media string from the cache */
+  /** return a media string from the cache */
   getCachedMedia(key) {
     return this.mediaStrings[key];
   }
 
-    /** remove from media cache */
+  /** remove from media cache */
   removeFromMediaCache(key) {
     if (this.mediaStrings[key]) {
       delete this.mediaStrings.key;
     }
   }
 
-    /** looks for a file inside the database, returns as a base64 encoded string
-        @param {string} filename inside of PROJECTFILES table
-    */
+  /** looks for a file inside the database, returns as a base64 encoded string
+      @param {string} filename inside of PROJECTFILES table
+  */
   readProjectFileAsBase64EncodedString(filename) {
     const db = this.getDatabaseManager();
     return db.readProjectFile(filename);
   }
 
-    /** removes a file from the PROJECTFILES table
-        @param {string} filename inside of PROJECTFILES table
-    */
+  /** removes a file from the PROJECTFILES table
+      @param {string} filename inside of PROJECTFILES table
+  */
   removeProjectFile(filename) {
     const db = this.getDatabaseManager();
     db.removeProjectFile(filename);
   }
 
-    /** writes a file to database as a base64 encoded string
-        @param {string} filename inside of PROJECTFILES table
-        @param {string} contents - base64 encoded string
-        @param {string} encoding
+  /** writes a file to database as a base64 encoded string
+      @param {string} filename inside of PROJECTFILES table
+      @param {string} contents - base64 encoded string
+      @param {string} encoding
 
-    */
+  */
   writeProjectFile(file, contents, encoding) {
     const db = this.getDatabaseManager();
     if (db.saveToProjectFiles(file, contents, encoding)) {
@@ -639,14 +637,14 @@ class ScratchJRDataStore {
   }
 
 
-    /** gets a file from the app directory - usually CSS or some asset
-        @param  {string} file  filename relative to application root
-        @param {bool} warnIfNotPresent make a warning if not present
+  /** gets a file from the app directory - usually CSS or some asset
+      @param  {string} file  filename relative to application root
+      @param {bool} warnIfNotPresent make a warning if not present
 
-     */
+   */
 
   safeGetFilenameInAppDirectory(file, warnIfNotPresent) {
-        // if the filename is null throw
+    // if the filename is null throw
     if (!file || file === '') throw new Error('File cannot be null or empty');
     if (!__dirname || __dirname === '') throw new Error('Application dir is empty');
 
@@ -654,27 +652,27 @@ class ScratchJRDataStore {
     const appRoot = path.join(__dirname, 'app');
 
 
-        // join on the application directory
+    // join on the application directory
     const filePath = path.join(appRoot, file);
     if (!this.isParentFolder(appRoot, filePath)) {
       throw new Error(`safe resolve path - file outside app folder.${filePath}`);
     }
 
-        // check if the file exists
+    // check if the file exists
     if (fs.existsSync(filePath)) {
       return filePath;
     }
 
     if (DEBUG_FILEIO || warnIfNotPresent) debugLog('safeGetFilenameInAppDirectory: file does not exist.', file, filePath);
 
-            // if not return null.
+    // if not return null.
     return null;
   }
 }
 
 
 // ====== DatabaseManager ==========================================
-
+//NEEDS TO BE REWRITTEN SINCE sql.js NEEDS TO BE ASYNC!!!!!!!!!!!!
 class DatabaseManager {
   constructor(databaseFilename, databaseRestoreFilename) {
     if (DEBUG_DATABASE) debugLog('DatabaseManager created');
@@ -683,52 +681,56 @@ class DatabaseManager {
     this.databaseRestoreFilename = databaseRestoreFilename;
 
     const isFirstTimeRun = !fs.existsSync(this.databaseFilename);
+    // SQL JS adds its own uncaughtException handler  - so we need to register ours first.
+    const initSqljs = require('sql.js');
+    initSqljs().then((SQL) => {
 
-    if (isFirstTimeRun) {
-      this.initTables();
-      this.runMigrations();
-      this.save();
-    } else {
-      this.open();
-      this.runMigrations();
-      this.save();
-    }
+      if (isFirstTimeRun) {
+        this.initTables(SQL);
+        this.runMigrations();
+        this.save();
+      } else {
+        this.open(SQL);
+        this.runMigrations();
+        this.save();
+      }
+    })
   }
 
-    /** opens the database, (or the restored database, if specified). */
-  open() {
+  /** opens the database, (or the restored database, if specified). */
+  open(SQL) {
     const fileToOpen = (this.databaseRestoreFilename) ? this.databaseRestoreFilename : this.databaseFilename;
 
     const filebuffer = fs.readFileSync(fileToOpen);
 
 
-        // Load the db
+    // Load the db
     this.db = new SQL.Database(filebuffer);
     this.db.handleError = this.handleError;
 
-        // save over the old file if we are restoring
+    // save over the old file if we are restoring
     if (this.databaseRestoreFilename) {
       this.save();
     }
   }
 
-    /** don't throw if there is a database error */
+  /** don't throw if there is a database error */
   handleError(e) {
     if (DEBUG_DATABASE) debugLog(e);
   }
 
-    /** close the database */
+  /** close the database */
   close() {
     if (this.db) this.db.close();
     this.db = null;
   }
 
-    /** returns if the database has been opened */
+  /** returns if the database has been opened */
   isOpen() {
     return (this.db != null);
   }
 
-    /** saves the database to the file specified in this.databaseFilename */
+  /** saves the database to the file specified in this.databaseFilename */
   save() {
     const data = this.db.export();
     const buffer = new Buffer(data);
@@ -736,72 +738,72 @@ class DatabaseManager {
   }
 
 
-    /** removes all unused files of a specific filetype, e.g. unused svg files
-        @param {string} fileType  note will be of format "wav" - not ".wav"
-    */
+  /** removes all unused files of a specific filetype, e.g. unused svg files
+      @param {string} fileType  note will be of format "wav" - not ".wav"
+  */
   cleanProjectFiles(fileType) {
-        // we don't use wav files, so translate that to webm.
-        if (fileType === 'wav') {
-            fileType = 'webm';
-        }
+    // we don't use wav files, so translate that to webm.
+    if (fileType === 'wav') {
+      fileType = 'webm';
+    }
 
 
-        const queryListAllFilesWithExtension = {
-            stmt: `select MD5 FROM PROJECTFILES WHERE MD5 LIKE "%.${fileType}"`,
-        };
+    const queryListAllFilesWithExtension = {
+      stmt: `select MD5 FROM PROJECTFILES WHERE MD5 LIKE "%.${fileType}"`,
+    };
 
-        const allProjectFilesWithExtension = this.query(queryListAllFilesWithExtension);
+    const allProjectFilesWithExtension = this.query(queryListAllFilesWithExtension);
 
-        for (let i = 0; i < allProjectFilesWithExtension.length; i++) {
-            const currentFileToCheck = allProjectFilesWithExtension[i].MD5;
+    for (let i = 0; i < allProjectFilesWithExtension.length; i++) {
+      const currentFileToCheck = allProjectFilesWithExtension[i].MD5;
 
-            if (!currentFileToCheck) continue;
+      if (!currentFileToCheck) continue;
 
-            if (DEBUG_CLEANASSETS) debugLog('checking if in use: ', currentFileToCheck);
-
-
-            const queryFindFileInProjects = {
-                stmt: `select ID from PROJECTS where json like "%${currentFileToCheck}%"`,
-            };
-        
-            // search in the JSON field of the PROJECTS table 
-            const projectJSON = this.query(queryFindFileInProjects);
-            if (projectJSON.length > 0) {
-                if (DEBUG_CLEANASSETS) debugLog('...project is currently using: ', currentFileToCheck);
-                continue; // we don't need to keep checking this file, it is being used
-            }
+      if (DEBUG_CLEANASSETS) debugLog('checking if in use: ', currentFileToCheck);
 
 
-            // search in the usershapes table
-            const queryFindFileInUsershapes = {
-                stmt: `select MD5 from USERSHAPES where MD5 = "${currentFileToCheck}"`,
-            };
+      const queryFindFileInProjects = {
+        stmt: `select ID from PROJECTS where json like "%${currentFileToCheck}%"`,
+      };
+
+      // search in the JSON field of the PROJECTS table 
+      const projectJSON = this.query(queryFindFileInProjects);
+      if (projectJSON.length > 0) {
+        if (DEBUG_CLEANASSETS) debugLog('...project is currently using: ', currentFileToCheck);
+        continue; // we don't need to keep checking this file, it is being used
+      }
 
 
-            const shapeFiles = this.query(queryFindFileInUsershapes);
-            if (shapeFiles.length > 0) {
-                if (DEBUG_CLEANASSETS) debugLog('...user shapes is using: ', currentFileToCheck, shapeFiles);
-                continue; // we don't need to keep checking this file, it is being used
-            }
+      // search in the usershapes table
+      const queryFindFileInUsershapes = {
+        stmt: `select MD5 from USERSHAPES where MD5 = "${currentFileToCheck}"`,
+      };
 
 
-            // search in the userbackgrounds table
-            const queryFindFileInUserbkgs = {
-                stmt: `select MD5 from USERBKGS where MD5 = "${currentFileToCheck}"`,
-            };
-            const bkgFiles = this.query(queryFindFileInUserbkgs);
-            if (bkgFiles.length > 0) {
-                if (DEBUG_CLEANASSETS) debugLog('...user backgrounds is using: ', currentFileToCheck, bkgFiles);
-                continue; // we don't need to keep checking this file, it is being used
-            }
+      const shapeFiles = this.query(queryFindFileInUsershapes);
+      if (shapeFiles.length > 0) {
+        if (DEBUG_CLEANASSETS) debugLog('...user shapes is using: ', currentFileToCheck, shapeFiles);
+        continue; // we don't need to keep checking this file, it is being used
+      }
 
 
-                // if the file is not being used, remove it
-            if (DEBUG_CLEANASSETS) debugLog('...not in use, removing: ', currentFileToCheck);
+      // search in the userbackgrounds table
+      const queryFindFileInUserbkgs = {
+        stmt: `select MD5 from USERBKGS where MD5 = "${currentFileToCheck}"`,
+      };
+      const bkgFiles = this.query(queryFindFileInUserbkgs);
+      if (bkgFiles.length > 0) {
+        if (DEBUG_CLEANASSETS) debugLog('...user backgrounds is using: ', currentFileToCheck, bkgFiles);
+        continue; // we don't need to keep checking this file, it is being used
+      }
 
-            this.removeProjectFile(currentFileToCheck);
-        }
-        this.save();
+
+      // if the file is not being used, remove it
+      if (DEBUG_CLEANASSETS) debugLog('...not in use, removing: ', currentFileToCheck);
+
+      this.removeProjectFile(currentFileToCheck);
+    }
+    this.save();
   }
 
   removeProjectFile(fileMD5) {
@@ -813,17 +815,17 @@ class DatabaseManager {
 
 
     json.stmt = `delete from ${table
-            } where ${json.cond}`;
+      } where ${json.cond}`;
 
 
     this.query(json);
-    
+
     this.save(); // flush the database to disk.
-    
+
   }
-    /** loads a file from the PROJECTFILES table
-        @param {string} fileMD5 filename
-    */
+  /** loads a file from the PROJECTFILES table
+      @param {string} fileMD5 filename
+  */
   readProjectFile(fileMD5) {
     const json = {};
     json.cond = 'MD5 = ?';
@@ -833,7 +835,7 @@ class DatabaseManager {
 
 
     json.stmt = `select ${json.items} from ${table
-            } where ${json.cond}${json.order ? ` order by ${json.order}` : ''}`;
+      } where ${json.cond}${json.order ? ` order by ${json.order}` : ''}`;
 
 
     const rows = this.query(json);
@@ -851,22 +853,22 @@ class DatabaseManager {
     json.values = [fileMD5, content];
     json.stmt = `insert into projectfiles (${keylist.toString()}) values (${values})`;
     var insertSQLResult = this.stmt(json);
-    
+
     this.save(); // flush the database to disk.
-    
+
     return (insertSQLResult >= 0);
   }
 
-    /** returns a key value pairing of the database result */
+  /** returns a key value pairing of the database result */
   getRowData(res) {
     return res.getAsObject();
   }
 
-    /** initialize the ScratchJR database.
-    The Electron version has one more table which is PROJECTFILES
-    This helps us store all the files in one database which can be easily saved/restored.
-    */
-  initTables() {
+  /** initialize the ScratchJR database.
+  The Electron version has one more table which is PROJECTFILES
+  This helps us store all the files in one database which can be easily saved/restored.
+  */
+  initTables(SQL) {
     if (this.db) throw new Error('database already created');
     this.db = new SQL.Database();
     this.db.handleError = this.handleError;
@@ -895,30 +897,30 @@ class DatabaseManager {
   }
 
 
-    /**
-    runs a sql query on the database, returns the number of rows from the result
-    @param {json} json object with stmt and values filled out
-    @returns lastRowId
-    */
+  /**
+  runs a sql query on the database, returns the number of rows from the result
+  @param {json} json object with stmt and values filled out
+  @returns lastRowId
+  */
   stmt(jsonStrOrJsonObj) {
-  
-  
-    try {
-        // {"stmt":"select name,thumbnail,id,isgift from projects where deleted = ? AND version = ? AND gallery IS NULL order by ctime desc","values":["NO","iOSv01"]}
 
-            // if it's a string, parse it.  if not, use it if it's not null.
+
+    try {
+      // {"stmt":"select name,thumbnail,id,isgift from projects where deleted = ? AND version = ? AND gallery IS NULL order by ctime desc","values":["NO","iOSv01"]}
+
+      // if it's a string, parse it.  if not, use it if it's not null.
       const json = (typeof jsonStrOrJsonObj === 'string') ? JSON.parse(jsonStrOrJsonObj) : jsonStrOrJsonObj || {};
       const stmt = json.stmt;
       const values = json.values;
 
 
-    
+
       if (DEBUG_DATABASE) debugLog('DatabaseManager executing stmt', stmt, values);
 
       const statement = this.db.prepare(stmt, values);
 
       while (statement.step()) statement.get();
-            // return JSON.stringify(statement.getAsObject());
+      // return JSON.stringify(statement.getAsObject());
 
       const result = this.db.exec('select last_insert_rowid();');
 
@@ -932,15 +934,15 @@ class DatabaseManager {
     }
   }
 
-    /**
-    runs a sql query on the database, returns the results of the SQL statment
-    @param {json} json object with stmt and values filled out - can be a string or object
+  /**
+  runs a sql query on the database, returns the results of the SQL statment
+  @param {json} json object with stmt and values filled out - can be a string or object
 
-    @returns lastRowId
-    */
+  @returns lastRowId
+  */
   query(jsonStrOrJsonObj) {
-    
-    try {    
+
+    try {
       // if it's a string, parse it.  if not, use it if it's not null.
       const json = (typeof jsonStrOrJsonObj === 'string') ? JSON.parse(jsonStrOrJsonObj) : jsonStrOrJsonObj || {};
 
@@ -966,7 +968,7 @@ class DatabaseManager {
 }
 
 var logFile = fs.createWriteStream(path.join(ScratchJRDataStore.getScratchJRFolder(), 'debug.log'), { flags: 'a' });
-  // Or 'w' to truncate the file every time the process starts.
+// Or 'w' to truncate the file every time the process starts.
 var logStdout = process.stdout;
 
 console.log = function () {  // eslint-disable-line no-console
