@@ -1,5 +1,5 @@
-import {isAndroid} from './lib';
-import iOS from '../iPad/iOS';
+import {isAndroid} from './lib.js';
+import iOS from '../iPad/iOS.js';
 
 export default class Sound {
     constructor (name, time) {

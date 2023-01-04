@@ -1,14 +1,14 @@
 
-import ScratchJr from '../ScratchJr';
-import iOS from '../../iPad/iOS';
-import IO from '../../iPad/IO';
-import MediaLib from '../../iPad/MediaLib';
-import Paint from '../../painteditor/Paint';
-import Events from '../../utils/Events';
-import Localization from '../../utils/Localization';
-import ScratchAudio from '../../utils/ScratchAudio';
+import ScratchJr from '../ScratchJr.js';
+import iOS from '../../iPad/iOS.js';
+import IO from '../../iPad/IO.js';
+import MediaLib from '../../iPad/MediaLib.js';
+import Paint from '../../painteditor/Paint.js';
+import Events from '../../utils/Events.js';
+import Localization from '../../utils/Localization.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
 import {gn, newHTML, scaleMultiplier,
-    getDocumentWidth, getDocumentHeight, setProps, newCanvas, frame} from '../../utils/lib';
+    getDocumentWidth, getDocumentHeight, setProps, newCanvas, frame} from '../../utils/lib.js';
 
 let selectedOne;
 let nativeJr = true;

@@ -2,14 +2,14 @@
 //  Scripts
 ///////////////////////////////////////////////
 
-import ScratchJr from '../ScratchJr';
-import Block from '../blocks/Block';
-import BlockSpecs from '../blocks/BlockSpecs';
-import ScriptsPane from './ScriptsPane';
-import Events from '../../utils/Events';
-import ScratchAudio from '../../utils/ScratchAudio';
+import ScratchJr from '../ScratchJr.js';
+import Block from '../blocks/Block.js';
+import BlockSpecs from '../blocks/BlockSpecs.js';
+import ScriptsPane from './ScriptsPane.js';
+import Events from '../../utils/Events.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
 import {gn, newHTML, setCanvasSize, setProps,
-    localx, localy, scaleMultiplier, hit3DRect, isTablet} from '../../utils/lib';
+    localx, localy, scaleMultiplier, hit3DRect, isTablet} from '../../utils/lib.js';
 
 export default class Scripts {
     constructor (spr) {

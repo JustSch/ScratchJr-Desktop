@@ -2,26 +2,26 @@
 //  General UI Layout
 /////////////////////////////////////
 
-import ScratchJr from '../ScratchJr';
-import BlockSpecs from '../blocks/BlockSpecs';
-import Alert from './Alert';
-import Project from './Project';
-import Thumbs from './Thumbs';
-import Palette from './Palette';
-import Grid from './Grid';
-import Stage from '../engine/Stage';
-import ScriptsPane from './ScriptsPane';
-import Undo from './Undo';
-import Library from './Library';
-import iOS from '../../iPad/iOS';
-import IO from '../../iPad/IO';
-import MediaLib from '../../iPad/MediaLib';
-import Paint from '../../painteditor/Paint';
-import Events from '../../utils/Events';
-import Localization from '../../utils/Localization';
-import ScratchAudio from '../../utils/ScratchAudio';
+import ScratchJr from '../ScratchJr.js';
+import BlockSpecs from '../blocks/BlockSpecs.js';
+import Alert from './Alert.js';
+import Project from './Project.js';
+import Thumbs from './Thumbs.js';
+import Palette from './Palette.js';
+import Grid from './Grid.js';
+import Stage from '../engine/Stage.js';
+import ScriptsPane from './ScriptsPane.js';
+import Undo from './Undo.js';
+import Library from './Library.js';
+import iOS from '../../iPad/iOS.js';
+import IO from '../../iPad/IO.js';
+import MediaLib from '../../iPad/MediaLib.js';
+import Paint from '../../painteditor/Paint.js';
+import Events from '../../utils/Events.js';
+import Localization from '../../utils/Localization.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
 import {frame, gn, CSSTransition, localx, newHTML, scaleMultiplier, getIdFor, isTablet, newDiv,
-    newTextInput, isAndroid, getDocumentWidth, getDocumentHeight, setProps, globalx} from '../../utils/lib';
+    newTextInput, isAndroid, getDocumentWidth, getDocumentHeight, setProps, globalx} from '../../utils/lib.js';
 
 let projectNameTextInput = null;
 let info = null;

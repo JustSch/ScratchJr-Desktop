@@ -1,7 +1,7 @@
-import ScratchJr from '../editor/ScratchJr';
-import iOS from '../iPad/iOS';
-import Camera from '../painteditor/Camera';
-import Record from '../editor/ui/Record';
+import ScratchJr from '../editor/ScratchJr.js';
+import iOS from '../iPad/iOS.js';
+import Camera from '../painteditor/Camera.js';
+import Record from '../editor/ui/Record.js';
 
 export function editorMain () { // eslint-disable-line import/prefer-default-export
     iOS.getsettings(doNext);

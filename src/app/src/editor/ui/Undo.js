@@ -2,13 +2,13 @@
 // Undo / Redo Functions
 //////////////////////////////////
 
-import ScratchJr from '../ScratchJr';
-import Thumbs from './Thumbs';
-import Project from './Project';
-import Palette from './Palette';
-import UI from './UI';
-import ScratchAudio from '../../utils/ScratchAudio';
-import {newHTML, isTablet, gn} from '../../utils/lib';
+import ScratchJr from '../ScratchJr.js';
+import Thumbs from './Thumbs.js';
+import Project from './Project.js';
+import Palette from './Palette.js';
+import UI from './UI.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
+import {newHTML, isTablet, gn} from '../../utils/lib.js';
 
 let buffer = [];
 let index = 0;

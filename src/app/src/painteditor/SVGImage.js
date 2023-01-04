@@ -5,15 +5,15 @@
 // path for clip -- > ID = pathmask_ + imageid
 // visible path border  --> ID = pathborder_ + imageid
 ///////////////////////////////////////////////////////////////////
-import Path from './Path';
-import Paint from './Paint';
-import Layer from './Layer';
-import Transform from './Transform';
-import Rectangle from '../geom/Rectangle';
-import SVGTools from './SVGTools';
-import SVG2Canvas from '../utils/SVG2Canvas';
-import PaintAction from './PaintAction';
-import {getIdFor, gn, getIdForCamera, setCanvasSize, DEGTOR} from '../utils/lib';
+import Path from './Path.js';
+import Paint from './Paint.js';
+import Layer from './Layer.js';
+import Transform from './Transform.js';
+import Rectangle from '../geom/Rectangle.js';
+import SVGTools from './SVGTools.js';
+import SVG2Canvas from '../utils/SVG2Canvas.js';
+import PaintAction from './PaintAction.js';
+import {getIdFor, gn, getIdForCamera, setCanvasSize, DEGTOR} from '../utils/lib.js';
 
 export default class SVGImage {
     static addCameraFill (mt, str) {

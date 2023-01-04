@@ -2,14 +2,14 @@
 // Home Screen
 //////////////////////////////////////////////////
 
-import {libInit, getUrlVars, gn, isAndroid, newHTML, preprocessAndLoad} from '../utils/lib';
-import ScratchAudio from '../utils/ScratchAudio';
-import iOS from '../iPad/iOS';
-import Localization from '../utils/Localization';
-import Cookie from '../utils/Cookie';
+import {libInit, getUrlVars, gn, isAndroid, newHTML, preprocessAndLoad} from '../utils/lib.js';
+import ScratchAudio from '../utils/ScratchAudio.js';
+import iOS from '../iPad/iOS.js';
+import Localization from '../utils/Localization.js';
+import Cookie from '../utils/Cookie.js';
 
-import Home from './Home';
-import Samples from './Samples';
+import Home from './Home.js';
+import Samples from './Samples.js';
 
 let version;
 let busy = false;

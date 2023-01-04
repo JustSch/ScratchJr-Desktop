@@ -1,13 +1,13 @@
 
-import Paint from './Paint';
-import Vector from '../geom/Vector';
-import {gn, getIdFor, rgb2hsb} from '../utils/lib';
-import Transform from './Transform';
-import SVG2Canvas from '../utils/SVG2Canvas';
-import SVGImage from './SVGImage';
-import Rectangle from '../geom/Rectangle';
-import Layer from './Layer';
-import Path from './Path';
+import Paint from './Paint.js';
+import Vector from '../geom/Vector.js';
+import {gn, getIdFor, rgb2hsb} from '../utils/lib.js';
+import Transform from './Transform.js';
+import SVG2Canvas from '../utils/SVG2Canvas.js';
+import SVGImage from './SVGImage.js';
+import Rectangle from '../geom/Rectangle.js';
+import Layer from './Layer.js';
+import Path from './Path.js';
 
 let attributeTable = {
     'path': ['d'],

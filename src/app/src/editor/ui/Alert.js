@@ -1,6 +1,6 @@
-import DrawPath from '../../utils/DrawPath';
+import DrawPath from '../../utils/DrawPath.js';
 import {globalx, globaly, scaleMultiplier, newCanvas,
-    setCanvasSize, setProps, writeText, getStringSize} from '../../utils/lib';
+    setCanvasSize, setProps, writeText, getStringSize} from '../../utils/lib.js';
 
 let balloon;
 

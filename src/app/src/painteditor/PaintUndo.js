@@ -1,10 +1,10 @@
-import ScratchJr from '../editor/ScratchJr';
-import Path from './Path';
-import Paint from './Paint';
-import Camera from './Camera';
-import SVGTools from './SVGTools';
-import {newHTML, gn, isTablet} from '../utils/lib';
-import ScratchAudio from '../utils/ScratchAudio';
+import ScratchJr from '../editor/ScratchJr.js';
+import Path from './Path.js';
+import Paint from './Paint.js';
+import Camera from './Camera.js';
+import SVGTools from './SVGTools.js';
+import {newHTML, gn, isTablet} from '../utils/lib.js';
+import ScratchAudio from '../utils/ScratchAudio.js';
 //////////////////////////////////
 // Undo / Redo Functions
 //////////////////////////////////

@@ -1,8 +1,8 @@
 import Intl from 'intl';
 import IntlMessageFormat  from 'intl-messageformat';
 
-import Cookie from './Cookie';
-import IO from '../iPad/IO';
+import Cookie from './Cookie.js';
+import IO from '../iPad/IO.js';
 
 
 // the subsquent requires need IntlMessageFormat defined - 

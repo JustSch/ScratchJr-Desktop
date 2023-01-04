@@ -5,19 +5,19 @@
 // some serious code changes - determining where the relevant Path.X are called, if any shared
 // data needs to be moved, etc. -TM
 
-import ScratchJr from '../editor/ScratchJr';
-import SVG2Canvas from '../utils/SVG2Canvas';
-import SVGImage from './SVGImage';
-import SVGTools from './SVGTools';
-import Layer from './Layer';
-import Vector from '../geom/Vector';
-import Transform from './Transform';
-import Paint from './Paint';
-import PaintUndo from './PaintUndo';
-import PaintAction from './PaintAction';
-import Ghost from './Ghost';
-import Events from '../utils/Events';
-import {gn, getIdFor, setCanvasSize, isTablet} from '../utils/lib';
+import ScratchJr from '../editor/ScratchJr.js';
+import SVG2Canvas from '../utils/SVG2Canvas.js';
+import SVGImage from './SVGImage.js';
+import SVGTools from './SVGTools.js';
+import Layer from './Layer.js';
+import Vector from '../geom/Vector.js';
+import Transform from './Transform.js';
+import Paint from './Paint.js';
+import PaintUndo from './PaintUndo.js';
+import PaintAction from './PaintAction.js';
+import Ghost from './Ghost.js';
+import Events from '../utils/Events.js';
+import {gn, getIdFor, setCanvasSize, isTablet} from '../utils/lib.js';
 
 // Previous "PathEdit" globals
 let lineDotColor = 'white';

@@ -2,7 +2,7 @@
 the caller should define the window event and call startDrag with the appropiate values
 */
 
-import {gn, scaleMultiplier, isTablet} from './lib';
+import {gn, scaleMultiplier, isTablet} from './lib.js';
 
 let dragged = false;
 let dragthumbnail;

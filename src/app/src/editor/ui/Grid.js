@@ -2,10 +2,10 @@
 // Stage grid
 //////////////////////////////
 
-import ScratchJr from '../ScratchJr';
-import Events from '../../utils/Events';
-import Localization from '../../utils/Localization';
-import {gn, scaleMultiplier, isTablet, newDiv, setProps, newP, newCanvas} from '../../utils/lib';
+import ScratchJr from '../ScratchJr.js';
+import Events from '../../utils/Events.js';
+import Localization from '../../utils/Localization.js';
+import {gn, scaleMultiplier, isTablet, newDiv, setProps, newP, newCanvas} from '../../utils/lib.js';
 
 let width = 482;
 let height = 362;

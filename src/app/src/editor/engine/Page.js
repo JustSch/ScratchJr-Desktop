@@ -1,19 +1,19 @@
-import ScratchJr from '../ScratchJr';
-import Project from '../ui/Project';
-import Thumbs from '../ui/Thumbs';
-import UI from '../ui/UI';
-import Sprite from './Sprite';
-import Palette from '../ui/Palette';
-import BlockSpecs from '../blocks/BlockSpecs';
-import iOS from '../../iPad/iOS';
-import IO from '../../iPad/IO';
-import MediaLib from '../../iPad/MediaLib';
-import Undo from '../ui/Undo';
-import Matrix from '../../geom/Matrix';
-import Vector from '../../geom/Vector';
+import ScratchJr from '../ScratchJr.js';
+import Project from '../ui/Project.js';
+import Thumbs from '../ui/Thumbs.js';
+import UI from '../ui/UI.js';
+import Sprite from './Sprite.js';
+import Palette from '../ui/Palette.js';
+import BlockSpecs from '../blocks/BlockSpecs.js';
+import iOS from '../../iPad/iOS.js';
+import IO from '../../iPad/IO.js';
+import MediaLib from '../../iPad/MediaLib.js';
+import Undo from '../ui/Undo.js';
+import Matrix from '../../geom/Matrix.js';
+import Vector from '../../geom/Vector.js';
 import {newHTML, newDiv, gn,
     setCanvasSizeScaledToWindowDocumentHeight,
-    DEGTOR, getIdFor, setProps, isTablet} from '../../utils/lib';
+    DEGTOR, getIdFor, setProps, isTablet} from '../../utils/lib.js';
 
 export default class Page {
     constructor (id, data, fcn) {

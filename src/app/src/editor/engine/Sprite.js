@@ -7,28 +7,28 @@
 //  d. Create Mask for pixel detection and cache it on the browser
 ////////////////////////////////////////////////////////////
 
-import ScratchJr from '../ScratchJr';
-import Project from '../ui/Project';
-import Thumbs from '../ui/Thumbs';
-import UI from '../ui/UI';
-import BlockSpecs from '../blocks/BlockSpecs';
-import iOS from '../../iPad/iOS';
-import IO from '../../iPad/IO';
-import MediaLib from '../../iPad/MediaLib';
-import Undo from '../ui/Undo';
-import ScriptsPane from '../ui/ScriptsPane';
-import SVG2Canvas from '../../utils/SVG2Canvas';
-import SVGTools from '../../painteditor/SVGTools';
-import Rectangle from '../../geom/Rectangle';
-import Events from '../../utils/Events';
-import Localization from '../../utils/Localization';
-import ScratchAudio from '../../utils/ScratchAudio';
-import Scripts from '../ui/Scripts';
+import ScratchJr from '../ScratchJr.js';
+import Project from '../ui/Project.js';
+import Thumbs from '../ui/Thumbs.js';
+import UI from '../ui/UI.js';
+import BlockSpecs from '../blocks/BlockSpecs.js';
+import iOS from '../../iPad/iOS.js';
+import IO from '../../iPad/IO.js';
+import MediaLib from '../../iPad/MediaLib.js';
+import Undo from '../ui/Undo.js';
+import ScriptsPane from '../ui/ScriptsPane.js';
+import SVG2Canvas from '../../utils/SVG2Canvas.js';
+import SVGTools from '../../painteditor/SVGTools.js';
+import Rectangle from '../../geom/Rectangle.js';
+import Events from '../../utils/Events.js';
+import Localization from '../../utils/Localization.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
+import Scripts from '../ui/Scripts.js';
 import {newHTML, newDiv, newP, gn,
     setCanvasSizeScaledToWindowDocumentHeight,
     DEGTOR, getIdFor, setProps, isTablet, isiOS,
     isAndroid, fitInRect, scaleMultiplier, setCanvasSize,
-    globaly, globalx, rgbToHex} from '../../utils/lib';
+    globaly, globalx, rgbToHex} from '../../utils/lib.js';
 
 export default class Sprite {
     constructor (attr, whenDone) {

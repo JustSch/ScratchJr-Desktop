@@ -1,19 +1,19 @@
-import ScratchJr from '../editor/ScratchJr';
-import Paint from './Paint';
-import PaintUndo from './PaintUndo';
-import ScratchAudio from '../utils/ScratchAudio';
-import SVGTools from './SVGTools';
-import Path from './Path';
-import Transform from './Transform';
-import Ghost from './Ghost';
-import Vector from '../geom/Vector';
-import Layer from './Layer';
-import SVG2Canvas from '../utils/SVG2Canvas';
-import SVGImage from './SVGImage';
-import Camera from './Camera';
-import Events from '../utils/Events';
-import Rectangle from '../geom/Rectangle';
-import {gn, isTablet, getIdFor} from '../utils/lib';
+import ScratchJr from '../editor/ScratchJr.js';
+import Paint from './Paint.js';
+import PaintUndo from './PaintUndo.js';
+import ScratchAudio from '../utils/ScratchAudio.js';
+import SVGTools from './SVGTools.js';
+import Path from './Path.js';
+import Transform from './Transform.js';
+import Ghost from './Ghost.js';
+import Vector from '../geom/Vector.js';
+import Layer from './Layer.js';
+import SVG2Canvas from '../utils/SVG2Canvas.js';
+import SVGImage from './SVGImage.js';
+import Camera from './Camera.js';
+import Events from '../utils/Events.js';
+import Rectangle from '../geom/Rectangle.js';
+import {gn, isTablet, getIdFor} from '../utils/lib.js';
 /*
 Type of objects:
 - fixed: Only exists on Assets Backgrounds and can it only be fill (color or camera) or removed

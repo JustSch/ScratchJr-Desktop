@@ -1,5 +1,5 @@
-import Localization from '../../utils/Localization';
-import IO from '../../iPad/IO';
+import Localization from '../../utils/Localization.js';
+import IO from '../../iPad/IO.js';
 
 let loadCount = 0;
 

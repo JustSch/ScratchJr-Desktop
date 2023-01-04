@@ -1,5 +1,5 @@
-import IO from './IO';
-import Localization from '../utils/Localization';
+import IO from './IO.js';
+import Localization from '../utils/Localization.js';
 
 let path;
 let samples;

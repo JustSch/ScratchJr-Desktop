@@ -1,15 +1,15 @@
-import ScratchJr from '../editor/ScratchJr';
-import iOS from '../iPad/iOS';
-import ScratchAudio from '../utils/ScratchAudio';
-import Paint from './Paint';
-import PaintUndo from './PaintUndo';
-import SVGImage from './SVGImage';
-import SVGTools from './SVGTools';
-import SVG2Canvas from '../utils/SVG2Canvas';
-import Rectangle from '../geom/Rectangle';
-import Layer from './Layer';
-import Ghost from './Ghost';
-import {gn, globalx, globaly, DEGTOR, setCanvasSize, isAndroid} from '../utils/lib';
+import ScratchJr from '../editor/ScratchJr.js';
+import iOS from '../iPad/iOS.js';
+import ScratchAudio from '../utils/ScratchAudio.js';
+import Paint from './Paint.js';
+import PaintUndo from './PaintUndo.js';
+import SVGImage from './SVGImage.js';
+import SVGTools from './SVGTools.js';
+import SVG2Canvas from '../utils/SVG2Canvas.js';
+import Rectangle from '../geom/Rectangle.js';
+import Layer from './Layer.js';
+import Ghost from './Ghost.js';
+import {gn, globalx, globaly, DEGTOR, setCanvasSize, isAndroid} from '../utils/lib.js';
 
 let view = 'front';
 let target;

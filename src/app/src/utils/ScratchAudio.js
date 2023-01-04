@@ -1,6 +1,6 @@
-import {isAndroid} from './lib';
-import Sound from './Sound';
-import iOS from '../iPad/iOS';
+import {isAndroid} from './lib.js';
+import Sound from './Sound.js';
+import iOS from '../iPad/iOS.js';
 
 ////////////////////////////////////////////////////
 /// Sound Playing

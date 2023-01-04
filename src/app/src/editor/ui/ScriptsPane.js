@@ -1,15 +1,15 @@
 
-import ScratchJr from '../ScratchJr';
-import Project from './Project';
-import Thumbs from './Thumbs';
-import Palette from './Palette';
-import Undo from './Undo';
-import Events from '../../utils/Events';
-import Scroll from './Scroll';
-import Menu from '../blocks/Menu';
-import ScratchAudio from '../../utils/ScratchAudio';
+import ScratchJr from '../ScratchJr.js';
+import Project from './Project.js';
+import Thumbs from './Thumbs.js';
+import Palette from './Palette.js';
+import Undo from './Undo.js';
+import Events from '../../utils/Events.js';
+import Scroll from './Scroll.js';
+import Menu from '../blocks/Menu.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
 import {gn, localx, localy, newHTML, isTablet,
-    globalx, globaly, setCanvasSize, getDocumentHeight, frame} from '../../utils/lib';
+    globalx, globaly, setCanvasSize, getDocumentHeight, frame} from '../../utils/lib.js';
 
 let scroll = undefined;
 let watermark;

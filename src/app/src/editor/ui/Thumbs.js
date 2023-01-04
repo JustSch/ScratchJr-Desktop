@@ -2,16 +2,16 @@
 //   Pages
 /////////////////////////////////////
 
-import ScratchJr from '../ScratchJr';
-import Palette from './Palette';
-import Page from '../engine/Page';
-import ScriptsPane from './ScriptsPane';
-import Undo from './Undo';
-import UI from './UI';
-import Events from '../../utils/Events';
-import ScratchAudio from '../../utils/ScratchAudio';
+import ScratchJr from '../ScratchJr.js';
+import Palette from './Palette.js';
+import Page from '../engine/Page.js';
+import ScriptsPane from './ScriptsPane.js';
+import Undo from './Undo.js';
+import UI from './UI.js';
+import Events from '../../utils/Events.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
 import {frame, gn, localx, newHTML, scaleMultiplier, getIdFor,
-    isTablet, newImage, localy, setProps} from '../../utils/lib';
+    isTablet, newImage, localy, setProps} from '../../utils/lib.js';
 
 let caret = undefined;
 

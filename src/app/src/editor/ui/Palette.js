@@ -2,21 +2,21 @@
 //  Blocks Categories Palettes
 ///////////////////////////////////
 
-import ScratchJr from '../ScratchJr';
-import Block from '../blocks/Block';
-import BlockSpecs from '../blocks/BlockSpecs';
-import ScriptsPane from './ScriptsPane';
-import Undo from './Undo';
-import iOS from '../../iPad/iOS';
-import MediaLib from '../../iPad/MediaLib';
-import Events from '../../utils/Events';
-import Rectangle from '../../geom/Rectangle';
-import DrawPath from '../../utils/DrawPath';
-import ScratchAudio from '../../utils/ScratchAudio';
-import Record from './Record';
+import ScratchJr from '../ScratchJr.js';
+import Block from '../blocks/Block.js';
+import BlockSpecs from '../blocks/BlockSpecs.js';
+import ScriptsPane from './ScriptsPane.js';
+import Undo from './Undo.js';
+import iOS from '../../iPad/iOS.js';
+import MediaLib from '../../iPad/MediaLib.js';
+import Events from '../../utils/Events.js';
+import Rectangle from '../../geom/Rectangle.js';
+import DrawPath from '../../utils/DrawPath.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
+import Record from './Record.js';
 import {frame, gn, localx, newHTML, scaleMultiplier, isTablet, newDiv,
     setProps, globalx, localy, globaly, drawScaled, newCanvas,
-    setCanvasSize, hitRect, writeText, getStringSize} from '../../utils/lib';
+    setCanvasSize, hitRect, writeText, getStringSize} from '../../utils/lib.js';
 
 
 let blockscale = 0.75;

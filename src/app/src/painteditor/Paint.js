@@ -1,22 +1,22 @@
-import ScratchJr from '../editor/ScratchJr';
-import BlockSpecs from '../editor/blocks/BlockSpecs';
-import SVGTools from './SVGTools';
-import SVG2Canvas from '../utils/SVG2Canvas';
-import Ghost from './Ghost';
-import iOS from '../iPad/iOS';
-import IO from '../iPad/IO';
-import MediaLib from '../iPad/MediaLib';
-import Localization from '../utils/Localization';
-import Alert from '../editor/ui/Alert';
-import PaintAction from './PaintAction';
-import ScratchAudio from '../utils/ScratchAudio';
-import Path from './Path';
-import PaintUndo from './PaintUndo';
-import Camera from './Camera';
-import Events from '../utils/Events';
-import Transform from './Transform';
-import Vector from '../geom/Vector';
-import {gn, newHTML, setCanvasSize, isTablet, getIdFor, isAndroid, setProps, hitRect, frame} from '../utils/lib';
+import ScratchJr from '../editor/ScratchJr.js';
+import BlockSpecs from '../editor/blocks/BlockSpecs.js';
+import SVGTools from './SVGTools.js';
+import SVG2Canvas from '../utils/SVG2Canvas.js';
+import Ghost from './Ghost.js';
+import iOS from '../iPad/iOS.js';
+import IO from '../iPad/IO.js';
+import MediaLib from '../iPad/MediaLib.js';
+import Localization from '../utils/Localization.js';
+import Alert from '../editor/ui/Alert.js';
+import PaintAction from './PaintAction.js';
+import ScratchAudio from '../utils/ScratchAudio.js';
+import Path from './Path.js';
+import PaintUndo from './PaintUndo.js';
+import Camera from './Camera.js';
+import Events from '../utils/Events.js';
+import Transform from './Transform.js';
+import Vector from '../geom/Vector.js';
+import {gn, newHTML, setCanvasSize, isTablet, getIdFor, isAndroid, setProps, hitRect, frame} from '../utils/lib.js';
 
 // Originally several files (Paint.js, PaintIO.js, PaintLayout.js)
 // were all contributing utility functions to the Paint object.

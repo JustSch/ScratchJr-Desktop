@@ -1,11 +1,11 @@
-import ScratchJr from '../ScratchJr';
-import BlockSpecs from './BlockSpecs';
-import Menu from './Menu';
-import Undo from '../ui/Undo';
+import ScratchJr from '../ScratchJr.js';
+import BlockSpecs from './BlockSpecs.js';
+import Menu from './Menu.js';
+import Undo from '../ui/Undo.js';
 import {setCanvasSize, setProps, writeText, scaleMultiplier,
     newHTML, newDiv, newCanvas, getStringSize, isTablet,
-    newP, globalx, globaly} from '../../utils/lib';
-import Localization from '../../utils/Localization';
+    newP, globalx, globaly} from '../../utils/lib.js';
+import Localization from '../../utils/Localization.js';
 
 /*
 Argument types

@@ -1,18 +1,18 @@
-import ScratchJr from '../ScratchJr';
-import Project from '../ui/Project';
-import Thumbs from '../ui/Thumbs';
-import UI from '../ui/UI';
-import Undo from '../ui/Undo';
-import ScriptsPane from '../ui/ScriptsPane';
-import Rectangle from '../../geom/Rectangle';
-import Events from '../../utils/Events';
-import ScratchAudio from '../../utils/ScratchAudio';
-import Vector from '../../geom/Vector';
-import Page from './Page';
+import ScratchJr from '../ScratchJr.js';
+import Project from '../ui/Project.js';
+import Thumbs from '../ui/Thumbs.js';
+import UI from '../ui/UI.js';
+import Undo from '../ui/Undo.js';
+import ScriptsPane from '../ui/ScriptsPane.js';
+import Rectangle from '../../geom/Rectangle.js';
+import Events from '../../utils/Events.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
+import Vector from '../../geom/Vector.js';
+import Page from './Page.js';
 import {newHTML, newDiv, gn,
     getIdFor, setProps,
     scaleMultiplier, setCanvasSize,
-    globaly, globalx} from '../../utils/lib';
+    globaly, globalx} from '../../utils/lib.js';
 
 export default class Stage {
     constructor (div) {

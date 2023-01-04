@@ -1,7 +1,7 @@
-import ScratchJr from '../ScratchJr';
-import Project from '../ui/Project';
-import Prims from './Prims';
-import Thread from './Thread';
+import ScratchJr from '../ScratchJr.js';
+import Project from '../ui/Project.js';
+import Prims from './Prims.js';
+import Thread from './Thread.js';
 
 export default class Runtime {
     constructor () {

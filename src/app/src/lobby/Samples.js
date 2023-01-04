@@ -2,13 +2,13 @@
 // Samples Screen
 //////////////////////////////////////////////////
 
-import Lobby from './Lobby';
-import IO from '../iPad/IO';
-import iOS from '../iPad/iOS';
-import MediaLib from '../iPad/MediaLib';
-import ScratchAudio from '../utils/ScratchAudio';
-import Localization from '../utils/Localization';
-import {gn, newHTML} from '../utils/lib';
+import Lobby from './Lobby.js';
+import IO from '../iPad/IO.js';
+import iOS from '../iPad/iOS.js';
+import MediaLib from '../iPad/MediaLib.js';
+import ScratchAudio from '../utils/ScratchAudio.js';
+import Localization from '../utils/Localization.js';
+import {gn, newHTML} from '../utils/lib.js';
 
 let frame;
 // Should ScratchJr projects be saved when the sample project is changed?

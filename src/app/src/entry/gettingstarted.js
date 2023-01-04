@@ -1,4 +1,4 @@
-import {gn, isiOS, getUrlVars} from '../utils/lib';
+import {gn, isiOS, getUrlVars} from '../utils/lib.js';
 
 let place;
 

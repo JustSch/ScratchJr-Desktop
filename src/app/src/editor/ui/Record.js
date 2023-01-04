@@ -1,9 +1,9 @@
-import ScratchJr from '../ScratchJr';
-import Palette from './Palette';
-import Undo from './Undo';
-import iOS from '../../iPad/iOS';
-import ScratchAudio from '../../utils/ScratchAudio';
-import {frame, gn, newHTML, isTablet, isAndroid, setProps} from '../../utils/lib';
+import ScratchJr from '../ScratchJr.js';
+import Palette from './Palette.js';
+import Undo from './Undo.js';
+import iOS from '../../iPad/iOS.js';
+import ScratchAudio from '../../utils/ScratchAudio.js';
+import {frame, gn, newHTML, isTablet, isAndroid, setProps} from '../../utils/lib.js';
 
 let interval = null;
 let recordedSound = null;

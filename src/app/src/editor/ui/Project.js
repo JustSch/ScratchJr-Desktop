@@ -1,16 +1,16 @@
-import ScratchJr from '../ScratchJr';
-import BlockSpecs from '../blocks/BlockSpecs';
-import Alert from './Alert';
-import Palette from './Palette';
-import UI from './UI';
-import Page from '../engine/Page';
-import Sprite from '../engine/Sprite';
-import iOS from '../../iPad/iOS';
-import IO from '../../iPad/IO';
-import Paint from '../../painteditor/Paint';
-import SVG2Canvas from '../../utils/SVG2Canvas';
+import ScratchJr from '../ScratchJr.js';
+import BlockSpecs from '../blocks/BlockSpecs.js';
+import Alert from './Alert.js';
+import Palette from './Palette.js';
+import UI from './UI.js';
+import Page from '../engine/Page.js';
+import Sprite from '../engine/Sprite.js';
+import iOS from '../../iPad/iOS.js';
+import IO from '../../iPad/IO.js';
+import Paint from '../../painteditor/Paint.js';
+import SVG2Canvas from '../../utils/SVG2Canvas.js';
 import {frame, gn, newHTML, scaleMultiplier, getIdFor,
-    isAndroid, setProps, setCanvasSize} from '../../utils/lib';
+    isAndroid, setProps, setCanvasSize} from '../../utils/lib.js';
 
 let metadata = undefined;
 let mediaCount = -1;

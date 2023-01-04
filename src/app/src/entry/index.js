@@ -1,9 +1,9 @@
-import ScratchAudio from '../utils/ScratchAudio';
-import {gn, getUrlVars, isAndroid, isiOS} from '../utils/lib';
-import iOS from '../iPad/iOS';
-import UI from '../editor/ui/UI';
-import Localization from '../utils/Localization';
-import AppUsage from '../utils/AppUsage';
+import ScratchAudio from '../utils/ScratchAudio.js';
+import {gn, getUrlVars, isAndroid, isiOS} from '../utils/lib.js';
+import iOS from '../iPad/iOS.js';
+import UI from '../editor/ui/UI.js';
+import Localization from '../utils/Localization.js';
+import AppUsage from '../utils/AppUsage.js';
 
 export function indexMain () { // eslint-disable-line import/prefer-default-export
     gn('gettings').onmousedown = indexGettingstarted;

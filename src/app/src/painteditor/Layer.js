@@ -1,12 +1,12 @@
-import ScratchJr from '../editor/ScratchJr';
-import Paint from './Paint';
-import PaintUndo from './PaintUndo';
-import Path from './Path';
-import SVGTools from './SVGTools';
-import SVGImage from './SVGImage';
-import SVG2Canvas from '../utils/SVG2Canvas';
-import Transform from './Transform';
-import {gn, setCanvasSize, newDiv, DEGTOR} from '../utils/lib';
+import ScratchJr from '../editor/ScratchJr.js';
+import Paint from './Paint.js';
+import PaintUndo from './PaintUndo.js';
+import Path from './Path.js';
+import SVGTools from './SVGTools.js';
+import SVGImage from './SVGImage.js';
+import SVG2Canvas from '../utils/SVG2Canvas.js';
+import Transform from './Transform.js';
+import {gn, setCanvasSize, newDiv, DEGTOR} from '../utils/lib.js';
 
 let targetOffscreen = document.createElement('canvas');
 let offscreen = document.createElement('canvas');
