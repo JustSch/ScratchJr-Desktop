@@ -19,8 +19,8 @@ webFrame.setVisualZoomLevelLimits(1, 1);
 /* eslint-enable import/no-extraneous-dependencies */  // --> ON
 /* eslint-enable import/no-unresolved  */  // --> ON
 
-
-const DEBUG =   remote.getCurrentWebContents().browserWindowOptions.isDebug;  // grab the DEBUG variable from main. This is passed through the BrowserWindow creation
+const DEBUG = false;
+//const DEBUG =   remote.getCurrentWebContents().browserWindowOptions.isDebug;  // grab the DEBUG variable from main. This is passed through the BrowserWindow creation
 const DEBUG_FILEIO =  DEBUG && true;       // saving and loading user files
 const DEBUG_RESOURCEIO = DEBUG && false;  // files from the application directory
 const DEBUG_NYI = DEBUG && true;          // stuff not yet implemented

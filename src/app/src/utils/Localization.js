@@ -1,5 +1,5 @@
-import Intl from 'intl';
-import IntlMessageFormat  from 'intl-messageformat';
+const Intl = require('intl');
+const IntlMessageFormat =require('intl-messageformat');
 
 import Cookie from './Cookie.js';
 import IO from '../iPad/IO.js';
