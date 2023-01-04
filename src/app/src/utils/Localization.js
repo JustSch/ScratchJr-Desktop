@@ -1,5 +1,5 @@
 const Intl = require('intl');
-const IntlMessageFormat =require('intl-messageformat');
+const IntlMessageFormat = require('intl-messageformat');
 
 import Cookie from './Cookie.js';
 import IO from '../iPad/IO.js';
@@ -8,7 +8,6 @@ import IO from '../iPad/IO.js';
 // the subsquent requires need IntlMessageFormat defined - 
 // so pop it in the global namespace.
 global.IntlMessageFormat = IntlMessageFormat;
-
 
 
 if (!window.Intl) {
@@ -32,7 +31,7 @@ require('intl/locale-data/jsonp/zh.js');
 //require('expose?IntlMessageFormat!intl-messageformat');
 
 
-require('intl-messageformat/dist/locale-data/ca');
+/* require('intl-messageformat/dist/locale-data/ca');
 require('intl-messageformat/dist/locale-data/de');
 require('intl-messageformat/dist/locale-data/en');
 require('intl-messageformat/dist/locale-data/es');
@@ -43,7 +42,7 @@ require('intl-messageformat/dist/locale-data/ja');
 require('intl-messageformat/dist/locale-data/pt');
 require('intl-messageformat/dist/locale-data/sv');
 require('intl-messageformat/dist/locale-data/th');
-require('intl-messageformat/dist/locale-data/zh');
+require('intl-messageformat/dist/locale-data/zh'); */
 
 
 let currentLocale;
@@ -120,7 +119,7 @@ export default class Localization {
         var message;
         if (window.IntlMessageFormat) {
 			if (key in localizationMessages) {
-				message = new window.IntlMessageFormat(localizationMessages[key], currentLocale);
+				message = new window.IntlMessageFormat.IntlMessageFormat(localizationMessages[key], currentLocale);
 				return message.format(formatting);
 			}
         } else {
