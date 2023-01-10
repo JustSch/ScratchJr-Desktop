@@ -299,7 +299,6 @@ export default class Lobby {
         var loadedSubpage = div.querySelector('.inappSubpage');
         if (loadedSubpage && loadedSubpage.id) {
             // call into appEntry.js
-            console.log(loadedSubpage.id);
         	loadPage(loadedSubpage.id); // eslint-disable-line no-undef
         }
         
