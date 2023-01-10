@@ -37,8 +37,6 @@ isDev = (isDev) || process.env.DEBUG_SCRATCHJR;
 
 const { app, dialog, BrowserWindow, BrowserView, ipcMain, Menu } = require('electron');
 
-
-
 /* eslint-enable import/extensions */  // --> ON
 /* eslint-enable import/no-extraneous-dependencies */  // --> ON
 /* eslint-enable import/no-unresolved  */  // --> ON
@@ -95,8 +93,6 @@ function createWindow() {
     {
       width: 1020,
       height: 800,
-      minHeight: 800,
-      minWidth: 1000,
       customVar: 'elephants',
       webPreferences: {
         nodeIntegration: true,
@@ -132,10 +128,10 @@ function createWindow() {
   }
 
   // Emitted when the window is closed.
-  win.on('closed', () => {
+  win.on('closed', async () => {
     // save the database if it has been opened.
     if (dataStore.databaseManager) {
-      dataStore.databaseManager.save();
+      await dataStore.databaseManager.save();
     }
 
     // Dereference the window object, usually you would store windows
@@ -152,7 +148,7 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => {
+app.on('ready', async () => {
 
   createWindow();
 
@@ -162,9 +158,14 @@ app.on('ready', () => {
       {
         label: 'File',
         submenu: [
-          { label: 'Restore projects', click: dataStore.restoreProjects.bind(dataStore) },
+          { label: 'Restore projects', click: await dataStore.restoreProjects.bind(dataStore) },
           { type: 'separator' },
           { role: 'quit' },
+          {
+            label: 'Toggle full screen',
+            click: () => { win.setFullScreen(!win.isFullScreen()); },
+            accelerator: 'CmdOrCtrl+f'
+          },
         ],
       }];
   } else {
@@ -173,6 +174,11 @@ app.on('ready', () => {
         label: 'File',
         submenu: [
           { role: 'quit' },
+          {
+            label: 'Toggle full screen',
+            click: () => { win.setFullScreen(!win.isFullScreen()); },
+            accelerator: 'CmdOrCtrl+f'
+          },
         ],
       }];
   }
@@ -204,6 +210,7 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
 
 
 
