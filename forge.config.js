@@ -37,8 +37,7 @@ module.exports = {
       "name": "@electron-forge/maker-zip",
       "platforms": [
         "darwin",
-        "win32",
-        "linux"
+        "win32"
       ]
     },
     ,
