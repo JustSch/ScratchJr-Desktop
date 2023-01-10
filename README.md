@@ -1,5 +1,3 @@
-## WIP Attempt to update to node 18. Currently does not run!
-
 ## Official disclaimer
 Scratch and ScratchJr are trademarks of Massachusetts Institute of Technology, which does not sponsor, endorse, or authorize this content. See scratchjr.org for more information.
 
