@@ -11,7 +11,7 @@ import Cookie from '../utils/Cookie.js';
 import Home from './Home.js';
 import Samples from './Samples.js';
 
-
+import {loadPage} from '../../appEntry.js';
 
 let version;
 let busy = false;
@@ -299,6 +299,7 @@ export default class Lobby {
         var loadedSubpage = div.querySelector('.inappSubpage');
         if (loadedSubpage && loadedSubpage.id) {
             // call into appEntry.js
+            console.log(loadedSubpage.id);
         	loadPage(loadedSubpage.id); // eslint-disable-line no-undef
         }
         

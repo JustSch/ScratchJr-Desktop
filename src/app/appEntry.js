@@ -24,7 +24,7 @@ window.onload = () => loadPage(window.scratchJrPage);
 
 
 
-function loadPage(page) {
+export function loadPage(page) {
 	// Function to be called after settings, locale strings, and Media Lib
 	// are asynchronously loaded. This is overwritten per HTML page below.
 	let entryFunction = () => {};
@@ -113,5 +113,3 @@ function loadPage(page) {
 		AppUsage.initUsage();
 	});
 }
-
-//modules.exports= {loadSettings, loadPage};
