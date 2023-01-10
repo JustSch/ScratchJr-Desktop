@@ -238,29 +238,31 @@ ipcMain.on('debugWriteLog', (event, args) => { // eslint-disable-line  no-unused
 */
 ipcMain.on('io_cleanassets', (event, fileType) => {
   if (DEBUG_NYI) debugLog('cleanAssets - ', fileType);
-  const db = dataStore.getDatabaseManager();
-  if (db) {
-    db.cleanProjectFiles(fileType);
-  }
+  dataStore.getDatabaseManager().then((db) => {
+    if (db) {
+      db.cleanProjectFiles(fileType);
+    }
+  });
+
   event.returnValue = true;
 });
 
 /** Sets the file with the given name to the given contents
     java version writes byte array using Base64.decode
  */
-ipcMain.on('io_setfile', (event, arg) => {
+ipcMain.on('io_setfile', async (event, arg) => {
   if (DEBUG_FILEIO) debugLog('io_setfile', arg);
 
-  event.returnValue = dataStore.writeProjectFile(arg.name, arg.contents, { encoding: 'utf8' });
+  event.returnValue = await dataStore.writeProjectFile(arg.name, arg.contents, { encoding: 'utf8' });
 });
 
 /** Gets a base64-encoded view of the contents of the given file
     java version returns Base64.encodeToString
 */
-ipcMain.on('io_getfile', (event, arg) => {
+ipcMain.on('io_getfile', async (event, arg) => {
   if (DEBUG_FILEIO) debugLog('io_getfile', arg);
 
-  event.returnValue = dataStore.readProjectFileAsBase64EncodedString(arg);
+  event.returnValue = await dataStore.readProjectFileAsBase64EncodedString(arg);
 });
 
 
@@ -268,11 +270,11 @@ ipcMain.on('io_getfile', (event, arg) => {
  * Returns the media data associated with the given filename and return the result base64-encoded.
  * NOTE: appears to be the same as getfile??
  */
-ipcMain.on('io_getmedia', (event, filename) => {
+ipcMain.on('io_getmedia',async (event, filename) => {
   if (DEBUG_FILEIO) debugLog('io_getmedia', filename);
 
 
-  event.returnValue = dataStore.readProjectFileAsBase64EncodedString(filename);
+  event.returnValue = await dataStore.readProjectFileAsBase64EncodedString(filename);
 });
 
 
@@ -308,10 +310,10 @@ ipcMain.on('io_getmediadone', (event, key) => {
   event.returnValue = true;
 });
 
-ipcMain.on('io_getmedialen', (event, file, key) => {
+ipcMain.on('io_getmedialen', async (event, file, key) => {
   if (DEBUG_FILEIO) debugLog('io_getmedialen', file, key);
 
-  const encodedStr = dataStore.readProjectFileAsBase64EncodedString(file);
+  const encodedStr = await dataStore.readProjectFileAsBase64EncodedString(file);
   dataStore.cacheMedia(key, encodedStr);
 
   event.returnValue = (encodedStr) ? encodedStr.length : 0;
@@ -325,11 +327,11 @@ ipcMain.on('io_getmedialen', (event, file, key) => {
  * @param extension The extension of the filename to store to
  * @return The filename of the file that was saved.
  */
-ipcMain.on('io_setmedia', (event, base64ContentStr, ext) => {
+ipcMain.on('io_setmedia', async (event, base64ContentStr, ext) => {
   if (DEBUG_FILEIO) debugLog('io_setmedia - write file', ext);
 
   const filename = `${dataStore.getMD5(base64ContentStr)}.${ext}`;
-  dataStore.writeProjectFile(filename, base64ContentStr, { encoding: 'base64' });
+  await dataStore.writeProjectFile(filename, base64ContentStr, { encoding: 'base64' });
 
   event.returnValue = filename;
 });
@@ -339,11 +341,11 @@ ipcMain.on('io_setmedia', (event, base64ContentStr, ext) => {
  * Writes the given base64-encoded content to a filename with the name key.ext.
  */
 
-ipcMain.on('io_setmedianame', (event, encodedData, key, ext) => {
+ipcMain.on('io_setmedianame',async (event, encodedData, key, ext) => {
   if (DEBUG_FILEIO) debugLog('io_setmedianame', key, ext);
 
   const filename = `${key}.${ext}`;
-  dataStore.writeProjectFile(filename, encodedData, { encoding: 'base64' });
+  await dataStore.writeProjectFile(filename, encodedData, { encoding: 'base64' });
   event.returnValue = filename;
 });
 
@@ -460,20 +462,20 @@ ipcMain.on('io_getAudioData', (event, audioName) => {
   }
 });
 
-ipcMain.on('database_stmt', (event, json) => {
+ipcMain.on('database_stmt',async (event, json) => {
   // {"stmt":"select name,thumbnail,id,isgift from projects where deleted = ? AND version = ? AND gallery IS NULL order by ctime desc","values":["NO","iOSv01"]}
   if (DEBUG_DATABASE) debugLog('database_stmt', json);
 
-  const db = dataStore.getDatabaseManager();
+  const db = await dataStore.getDatabaseManager();
   event.returnValue = db.stmt(json);
 
 
   if (DEBUG_DATABASE) debugLog('database_stmt result:', event.returnValue);
 });
-ipcMain.on('database_query', (event, json) => {
+ipcMain.on('database_query', async (event, json) => {
   if (DEBUG_DATABASE) debugLog('database_query', json);
 
-  const db = dataStore.getDatabaseManager();
+  const db = await dataStore.getDatabaseManager();
 
   event.returnValue = JSON.stringify(db.query(json));
 });
@@ -494,13 +496,14 @@ class ScratchJRDataStore {
   }
 
 
-  getDatabaseManager() {
+  async getDatabaseManager() {
     if (!this.databaseManager) {
       const scratchFolder = ScratchJRDataStore.getScratchJRFolder();
       const scratchDBPath = path.join(scratchFolder, 'scratchjr.sqllite');
-      this.databaseManager = new DatabaseManager(scratchDBPath);
+      this.databaseManager = await DatabaseManager.initialize(scratchDBPath);
       if (DEBUG_DATABASE) debugLog('DatabaseManager created');
     }
+
     return this.databaseManager;
   }
 
@@ -516,13 +519,13 @@ class ScratchJRDataStore {
       existing database.  This is used in a classroom situation
       where you want to reset the projects to a certain configuration
   */
-  restoreProjects() {
+  async restoreProjects() {
     const scratchFolder = ScratchJRDataStore.getScratchJRFolder();
     const scratchDBPath = path.join(scratchFolder, 'scratchjr.sqllite');
     const scratchRestoreDB = path.join(scratchFolder, 'scratchjr.sqllite.restore');
 
     if (fs.existsSync(scratchRestoreDB)) {
-      this.databaseManager = new DatabaseManager(scratchDBPath, scratchRestoreDB);
+      this.databaseManager = await DatabaseManager.initialize(scratchDBPath, scratchRestoreDB);
 
       if (DEBUG_DATABASE) debugLog('DatabaseManager reloaded from restored copy');
 
@@ -609,16 +612,16 @@ class ScratchJRDataStore {
   /** looks for a file inside the database, returns as a base64 encoded string
       @param {string} filename inside of PROJECTFILES table
   */
-  readProjectFileAsBase64EncodedString(filename) {
-    const db = this.getDatabaseManager();
+  async readProjectFileAsBase64EncodedString(filename) {
+    const db = await this.getDatabaseManager();
     return db.readProjectFile(filename);
   }
 
   /** removes a file from the PROJECTFILES table
       @param {string} filename inside of PROJECTFILES table
   */
-  removeProjectFile(filename) {
-    const db = this.getDatabaseManager();
+  async removeProjectFile(filename) {
+    const db = await this.getDatabaseManager();
     db.removeProjectFile(filename);
   }
 
@@ -628,8 +631,8 @@ class ScratchJRDataStore {
       @param {string} encoding
 
   */
-  writeProjectFile(file, contents, encoding) {
-    const db = this.getDatabaseManager();
+  async writeProjectFile(file, contents, encoding) {
+    const db = await this.getDatabaseManager();
     if (db.saveToProjectFiles(file, contents, encoding)) {
       return file;
     }
@@ -674,27 +677,31 @@ class ScratchJRDataStore {
 // ====== DatabaseManager ==========================================
 //NEEDS TO BE REWRITTEN SINCE sql.js NEEDS TO BE ASYNC!!!!!!!!!!!!
 class DatabaseManager {
-  constructor(databaseFilename, databaseRestoreFilename) {
+  constructor(databaseFilename, databaseRestoreFilename, SQL) {
     if (DEBUG_DATABASE) debugLog('DatabaseManager created');
-
+  
     this.databaseFilename = databaseFilename;
     this.databaseRestoreFilename = databaseRestoreFilename;
 
     const isFirstTimeRun = !fs.existsSync(this.databaseFilename);
     // SQL JS adds its own uncaughtException handler  - so we need to register ours first.
-    const initSqljs = require('sql.js');
-    initSqljs().then((SQL) => {
+    if (isFirstTimeRun) {
+      this.initTables(SQL);
+      this.runMigrations();
+      this.save();
+    } else {
+      this.open(SQL);
+      this.runMigrations();
+      this.save();
+    }
 
-      if (isFirstTimeRun) {
-        this.initTables(SQL);
-        this.runMigrations();
-        this.save();
-      } else {
-        this.open(SQL);
-        this.runMigrations();
-        this.save();
-      }
-    })
+  }
+  static async initialize(databaseFilename, databaseRestoreFilename) {
+    const initSqlJs = require('sql.js');
+    const SQL = await initSqlJs({
+    });
+    //const db = new SQL.Database();
+    return new DatabaseManager(databaseFilename, databaseRestoreFilename,SQL);
   }
 
   /** opens the database, (or the restored database, if specified). */
@@ -732,9 +739,9 @@ class DatabaseManager {
 
   /** saves the database to the file specified in this.databaseFilename */
   save() {
-    // const data = this.db.export();
-    // const buffer = new Buffer(data);
-    // fs.writeFileSync(this.databaseFilename, buffer);
+    const data = this.db.export();
+    const buffer = new Buffer(data);
+    fs.writeFileSync(this.databaseFilename, buffer);
   }
 
 
