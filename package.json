@@ -12,7 +12,6 @@
         "make64": "electron-forge make --arch=x64",
         "make32": "electron-forge make --arch=ia32",
         "makeAll": "electron-forge make --arch=ia32,x64",
-        "publish": "electron-forge publish",
         "lint": "eslint src --color"
     },
     "keywords": [],
@@ -125,6 +124,8 @@
         ]
     },
     "dependencies": {
+        "@reforged/maker-appimage": "^3.1.4",
+        "electron-is-dev": "^2.0.0",
         "electron-squirrel-startup": "^1.0.0",
         "hoek": "^4.2.1",
         "intl": "^1.2.5",
@@ -139,12 +140,10 @@
         "@electron-forge/maker-rpm": "^6.0.4",
         "@electron-forge/maker-squirrel": "^6.0.4",
         "@electron-forge/maker-zip": "^6.0.4",
-        "@reforged/maker-appimage": "^3.1.1",
         "babel-plugin-transform-async-to-generator": "^6.24.1",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
         "electron": "^22.0.0",
-        "electron-is-dev": "^2.0.0",
         "eslint": "^8.31.0",
         "eslint-plugin-import": "^2.11.0",
         "eslint-plugin-react": "^7.7.0"
