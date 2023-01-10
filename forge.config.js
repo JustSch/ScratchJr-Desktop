@@ -68,7 +68,7 @@ module.exports = {
               "categories": [
                 "Education"
               ],
-              "AppImageKitRelease": "continous"
+              "AppImageKitRelease": "continuous"
             }
           }
         }
