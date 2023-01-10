@@ -33,7 +33,6 @@ function loadPage(page) {
 	// directory (and root becomes '../')
 	let root = './';
 
-	
 	// Load CSS and set root/entryFunction for all pages
 	switch (page) {
 	default:

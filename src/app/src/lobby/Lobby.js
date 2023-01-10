@@ -11,6 +11,8 @@ import Cookie from '../utils/Cookie.js';
 import Home from './Home.js';
 import Samples from './Samples.js';
 
+
+
 let version;
 let busy = false;
 let errorTimer;

@@ -732,9 +732,9 @@ class DatabaseManager {
 
   /** saves the database to the file specified in this.databaseFilename */
   save() {
-    const data = this.db.export();
-    const buffer = new Buffer(data);
-    fs.writeFileSync(this.databaseFilename, buffer);
+    // const data = this.db.export();
+    // const buffer = new Buffer(data);
+    // fs.writeFileSync(this.databaseFilename, buffer);
   }
 
 
