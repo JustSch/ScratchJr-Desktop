@@ -40,7 +40,6 @@ module.exports = {
         "win32"
       ]
     },
-    ,
     {
       "name": "@electron-forge/maker-deb",
       "config": {
