@@ -23,7 +23,7 @@ This port makes use of Electron to host the ScratchJR HTML5 application on Mac, 
 Electron (https://electronjs.org/) is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS.   
 
 Electron Forge (https://electronforge.io/) stitches together several electron modules to provide easier support for using the latest version 
-of javascript, making dmg/exe files and installers.     
+of javascript, making builds and installers ie: .exe/.app/.deb files.     
 
 
 ## Architecture Overview
