@@ -782,7 +782,7 @@ class VideoCapture {
     }
 
     beginStartRecord(stream) {
-		this.videoElement.src = window.URL.createObjectURL(stream);
+        this.videoElement.srcObject = stream;
         this.currentStream = stream;
 
 		if (!this.isRecordingPermitted) {
