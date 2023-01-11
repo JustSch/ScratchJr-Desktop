@@ -425,7 +425,7 @@ ipcMain.on('io_gettextresource', (event, filename) => {
   then look for  app/src/sounds
   then look in db for the audio name
 */
-ipcMain.on('io_getAudioData', (event, audioName) => {
+ipcMain.on('io_getAudioData', async (event, audioName) => {
   if (DEBUG_FILEIO) debugLog('io_getAudioData - looking for', audioName);
 
 
@@ -442,7 +442,7 @@ ipcMain.on('io_getAudioData', (event, audioName) => {
     if (DEBUG_FILEIO) debugLog('...trying to look in the PROJECTFILE table', audioName);
 
     // this is already stored as a string, we do not need to convert it
-    let projectDBFile = dataStore.readProjectFileAsBase64EncodedString(audioName);
+    let projectDBFile = await dataStore.readProjectFileAsBase64EncodedString(audioName);
     if (DEBUG_FILEIO && !projectDBFile) debugLog('...WARNING: unable to find: ', audioName);
     event.returnValue = projectDBFile;
     return;
