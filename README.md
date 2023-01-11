@@ -9,7 +9,7 @@ Scratch and ScratchJr are trademarks of Massachusetts Institute of Technology, w
 
 This repository contains a port of ScratchJr for Desktop. 
 
-It has been ported with love from the iPad / Android editions to Mac/Windows
+It has been ported with love from the iPad / Android editions to Mac/Windows/Linux
 as an independent, open source community project.
 
 
@@ -18,7 +18,7 @@ the LLK/ScratchJr (https://github.com/LLK/scratchjr) repository.
 
 ## About Electron and Electron Forge
 
-This port makes use of Electron to host the ScratchJR HTML5 application on Mac and Windows.
+This port makes use of Electron to host the ScratchJR HTML5 application on Mac, Windows, and, Linux.
 
 Electron (https://electronjs.org/) is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS.   
 
@@ -67,11 +67,11 @@ Also git (which you may already have).
 * <tt>npm run start</tt>
 
 
-## Packaging for Windows / Mac
+## Packaging for Windows / Mac / Linux
 
-For windows installers, you must do this from a Windows machine.  Same for Mac.
+For windows installers, you must do this from a Windows machine.  Same for Mac and/or Linux.
 
-* <tt>npm run package</tt>
+* <tt>npm run make</tt>
 
 
 ## Running lint
@@ -119,7 +119,7 @@ https://github.com/LLK/scratchjr
 
 In addition, thank you to the folks working on Electron, ElectronForge, and Sql.js.
 
-Thank you to AppVeyor and Travis CL for providing Mac, Windows and Linux builds.
+Thank you to Github for workflows that allow building for Windows, Mac OS, and, Linux.
 
 
 ## Disclaimers
