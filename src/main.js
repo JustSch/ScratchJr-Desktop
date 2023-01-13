@@ -158,14 +158,15 @@ app.on('ready', async () => {
       {
         label: 'File',
         submenu: [
-          { label: 'Restore projects', click: await dataStore.restoreProjects.bind(dataStore) },
-          { type: 'separator' },
-          { role: 'quit' },
+          
           {
             label: 'Toggle full screen',
             click: () => { win.setFullScreen(!win.isFullScreen()); },
             accelerator: 'CmdOrCtrl+f'
           },
+          { label: 'Restore projects', click: await dataStore.restoreProjects.bind(dataStore) },
+          { type: 'separator' },
+          { role: 'quit' },
         ],
       }];
   } else {
@@ -173,12 +174,12 @@ app.on('ready', async () => {
       {
         label: 'File',
         submenu: [
-          { role: 'quit' },
           {
             label: 'Toggle full screen',
             click: () => { win.setFullScreen(!win.isFullScreen()); },
             accelerator: 'CmdOrCtrl+f'
           },
+          { role: 'quit' },
         ],
       }];
   }
