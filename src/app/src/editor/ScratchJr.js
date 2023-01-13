@@ -20,6 +20,8 @@ import Localization from '../utils/Localization.js';
 import {libInit, gn, scaleMultiplier, newHTML,
     isAndroid, isTablet, getUrlVars, CSSTransition3D, frame} from '../utils/lib.js';
 
+const { ipcRenderer } = require('electron');
+
 let workingCanvas = document.createElement('canvas');
 let workingCanvas2 = document.createElement('canvas');
 let activeFocus;
@@ -992,3 +994,10 @@ export default class ScratchJr {
         }
     }
 }
+
+ipcRenderer.on('app-close', function(event) {
+    // save the project
+    ScratchJr.saveProject(null, function () {});
+    // tell electron that it can exit now
+    event.sender.send('app-closed-acked');
+});

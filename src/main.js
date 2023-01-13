@@ -127,23 +127,28 @@ function createWindow() {
     win.webContents.openDevTools();
   }
 
-  // Emitted when the window is closed.
-  win.on('closed', async () => {
-    // save the database if it has been opened.
-    if (dataStore.databaseManager) {
-      await dataStore.databaseManager.save();
-    }
-
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null;
+  win.on('close', (e) => {
+    e.preventDefault();  
+    //tell editor to flush the data
+    win.webContents.send('app-close');    
   });
 
   win.webContents.on('did-finish-load', () => {
   });
 }
 
+ipcMain.on('app-closed-acked',(event) => {  
+  // save the database if it has been opened.
+  if (dataStore.databaseManager) {
+    dataStore.databaseManager.save();
+  }
+
+  // Dereference the window object, usually you would store windows
+  // in an array if your app supports multi windows, this is the time
+  // when you should delete the corresponding element.
+  win = null;
+  app.exit();
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
