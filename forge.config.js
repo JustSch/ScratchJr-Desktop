@@ -7,7 +7,7 @@ let platform = os.platform();
 
 const iconFileWindows = path.resolve(__dirname, "src/icons/win/icon.ico");
 const installerGifWindows = path.resolve(__dirname, "src/icons/win/installerGif.gif");
-const cpDate = "Copyright (c) 2016, MIT";
+const copyrightDate = "Copyright (c) 2016, MIT";
 
 const iconFileMac = path.resolve(__dirname, "src/icons/mac/icon.icns");
 const iconFileLinux = path.resolve(__dirname, "src/icons/png/512x512.png");
@@ -24,13 +24,16 @@ else if (platform === 'linux') {
 module.exports = {
   "packagerConfig": {
     "icon": iconFile,
-    appCopyright: "Copyright (c) 2016, MIT"
+    appCopyright: copyrightDate
   },
   "makers": [
     {
       "name": "@electron-forge/maker-squirrel",
       "config": {
-        "name": "ScratchJr"
+        "name": "ScratchJr",
+        "setupIcon": iconFile,
+        "loadingGif": installerGifWindows,
+        "copyright": copyrightDate
       }
     },
     {
