@@ -45,7 +45,8 @@ module.exports = {
       "name": "@electron-forge/maker-deb",
       "config": {
         "options": {
-          "icon": iconFile
+          "icon": iconFile,
+          "categories": ["Education"]
         }
       }
     },
@@ -53,7 +54,8 @@ module.exports = {
       "name": "@electron-forge/maker-rpm",
       "config": {
         "options": {
-          "icon": iconFile
+          "icon": iconFile,
+          "categories": ["Education"]
         }
       }
     }
