@@ -1,10 +1,9 @@
 
 const path = require('path');
-
 const os = require('os');
 let iconFile;
 let platform = os.platform();
-
+let {version} = require('./package.json');
 const iconFileWindows = path.resolve(__dirname, "src/icons/win/icon.ico");
 const installerGifWindows = path.resolve(__dirname, "src/icons/win/installerGif.gif");
 const copyrightDate = "Copyright (c) 2016, MIT";
@@ -28,12 +27,9 @@ module.exports = {
   },
   "makers": [
     {
-      "name": "@electron-forge/maker-squirrel",
+      "name": "@electron-forge/maker-wix",
       "config": {
-        "name": "ScratchJr",
-        "setupIcon": iconFile,
-        "loadingGif": installerGifWindows,
-        "copyright": copyrightDate
+        "icon": iconFile
       }
     },
     {
