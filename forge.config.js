@@ -29,7 +29,8 @@ module.exports = {
     {
       "name": "@electron-forge/maker-wix",
       "config": {
-        "icon": iconFile
+        "icon": iconFile,
+        "upgradeCode": "{E4346E7F-98B4-4602-9FAA-5AF8C9844BA7}"
       }
     },
     {
