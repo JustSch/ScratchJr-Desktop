@@ -4,7 +4,9 @@ Scratch and ScratchJr are trademarks of Massachusetts Institute of Technology, w
 ## Downloads 
 [Download ScratchJr for Desktop](https://github.com/JustSch/ScratchJr-Desktop/releases/latest)
 
-Note: MacOS Version is named ScratchJr-darwin-x64-x.x.x.zip
+Note: 
+      
+    MacOS Version is named ScratchJr-darwin-x64-x.x.x.zip Windows Installer is named ScratchJr.msi
 
 ## The geeky stuff
 
