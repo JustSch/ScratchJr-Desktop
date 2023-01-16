@@ -59,6 +59,21 @@ module.exports = {
           "categories": ["Education"]
         }
       }
+    },
+    {
+      "name": "@reforged/maker-appimage",
+      "config": {
+        "options": {
+          "name": "ScratchJr",
+          "bin": "ScratchJr",
+          "productName": "ScratchJr",
+          "icon": iconFile,
+          "categories": [
+            "Education"
+          ],
+          "AppImageKitRelease": "continuous"
+        }
+      }
     }
   ]
 
