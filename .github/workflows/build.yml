@@ -50,8 +50,8 @@ jobs:
       - name: Set path for candle and light
         run: echo "C:\Program Files (x86)\WiX Toolset v3.11\bin" >> $GITHUB_PATH
         shell: bash
-        if: release_suffix == windows
-        
+        if: matrix.release_suffix == windows
+
       - name: Run Build
         run: npm ci && npm run make
         
