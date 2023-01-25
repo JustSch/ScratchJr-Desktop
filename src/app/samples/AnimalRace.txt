@@ -15,17 +15,17 @@
         "currentPage": "page 1",
         "page 1": {
             "textstartat": 36,
-            "sprites": ["Cat 1", "Elephant 1", "Giraffe 1", "Monkey 1"],
+            "sprites": ["Toc  1", "Elephant 1", "Giraffe 1", "Monkey 1"],
             "md5": "samples/AnimalRace_savannah.svg",
             "num": 1,
-            "lastSprite": "Cat 1",
-            "Cat 1": {
+            "lastSprite": "Toc  1",
+            "Toc  1": {
                 "shown": true,
                 "type": "sprite",
-                "md5": "Cat.svg",
-                "id": "Cat 1",
+                "md5": "Red.svg",
+                "id": "Toc  1",
                 "flip": true,
-                "name": "key_character_cat",
+                "name": "key_quickintro_toc",
                 "angle": 0,
                 "scale": 0.5,
                 "speed": 2,
@@ -150,7 +150,7 @@
                     ]
                 ]
             },
-            "layers": ["Elephant 1", "Giraffe 1", "Monkey 1", "Cat 1"]
+            "layers": ["Elephant 1", "Giraffe 1", "Monkey 1", "Toc  1"]
         }
     }
 }]

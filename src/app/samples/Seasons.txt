@@ -15,17 +15,17 @@
         "currentPage": "page 1",
         "page 1": {
             "textstartat": 84.6,
-            "sprites": ["Cat 1", "Text 1"],
+            "sprites": ["Toc 1", "Text 1"],
             "md5": "Summer.svg",
             "num": 1,
-            "lastSprite": "Cat 1",
-            "Cat 1": {
+            "lastSprite": "Toc 1",
+            "Toc 1": {
                 "shown": true,
                 "type": "sprite",
-                "md5": "Cat.svg",
-                "id": "Cat 1",
+                "md5": "Red.svg",
+                "id": "Toc 1",
                 "flip": false,
-                "name": "key_character_cat",
+                "name": "key_quickintro_toc",
                 "angle": 0,
                 "scale": 0.6,
                 "speed": 2,
@@ -71,21 +71,21 @@
                 "color": "rgb(242, 243, 242)",
                 "fontsize": 56
             },
-            "layers": ["Cat 1", "Text 1"]
+            "layers": ["Toc 1", "Text 1"]
         },
         "page 2": {
             "textstartat": 84.6,
-            "sprites": ["Cat 2", "Text 2"],
+            "sprites": ["Toc 2", "Text 2"],
             "md5": "Fall.svg",
             "num": 2,
-            "lastSprite": "Cat 2",
-            "Cat 2": {
+            "lastSprite": "Toc 2",
+            "Toc 2": {
                 "shown": true,
                 "type": "sprite",
-                "md5": "Cat.svg",
-                "id": "Cat 2",
+                "md5": "Red.svg",
+                "id": "Toc 2",
                 "flip": false,
-                "name": "key_character_cat",
+                "name": "Toc",
                 "angle": 0,
                 "scale": 0.6,
                 "speed": 2,
@@ -132,21 +132,21 @@
                 "color": "rgb(242, 243, 242)",
                 "fontsize": 56
             },
-            "layers": ["Cat 2", "Text 2"]
+            "layers": ["Toc 2", "Text 2"]
         },
         "page 3": {
             "textstartat": 84.6,
-            "sprites": ["Cat 3", "Text 3"],
+            "sprites": ["Toc 3", "Text 3"],
             "md5": "Winter.svg",
             "num": 3,
-            "lastSprite": "Cat 3",
-            "Cat 3": {
+            "lastSprite": "Toc 3",
+            "Toc 3": {
                 "shown": true,
                 "type": "sprite",
-                "md5": "Cat.svg",
-                "id": "Cat 3",
+                "md5": "Red.svg",
+                "id": "Toc 3",
                 "flip": false,
-                "name": "key_character_cat",
+                "name": "Toc",
                 "angle": 0,
                 "scale": 0.6,
                 "speed": 2,
@@ -192,21 +192,21 @@
                 "color": "rgb(255, 221, 51)",
                 "fontsize": 56
             },
-            "layers": ["Cat 3", "Text 3"]
+            "layers": ["Toc 3", "Text 3"]
         },
         "page 4": {
             "textstartat": 84.6,
-            "sprites": ["Cat 4", "Star 1", "Text 4"],
+            "sprites": ["Toc 4", "Star 1", "Text 4"],
             "md5": "Spring.svg",
             "num": 4,
             "lastSprite": "Star 1",
-            "Cat 4": {
+            "Toc 4": {
                 "shown": true,
                 "type": "sprite",
-                "md5": "Cat.svg",
-                "id": "Cat 4",
+                "md5": "Red.svg",
+                "id": "Toc 4",
                 "flip": false,
-                "name": "key_character_cat",
+                "name": "Toc",
                 "angle": 0,
                 "scale": 0.6,
                 "speed": 2,
@@ -284,7 +284,7 @@
                 "color": "rgb(242, 243, 242)",
                 "fontsize": 56
             },
-            "layers": ["Star 1", "Text 4", "Cat 4"]
+            "layers": ["Star 1", "Text 4", "Toc 4"]
         }
     }
 }]
